@@ -2,11 +2,17 @@ package com.ipartek.formacion.dao.persistence;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Usuario {
 	
 	private int codigo;
 	private String nombre;
 	private String apellidos;
+	@NotNull @Past @DateTimeFormat(pattern="dd/MM/yyyy")
 	private Date fNacimiento;
 	private String email;
 	
@@ -15,7 +21,6 @@ public class Usuario {
 		setCodigo(-1);
 		setNombre("");
 		setApellidos("");
-		setfNacimiento(new Date());
 		setEmail("");
 	}
 

@@ -20,7 +20,7 @@
 			List<Usuario> usuarios = (List<Usuario>) request.getAttribute("listado-usuarios");
 			if(usuarios.size()>0){
 				for(Usuario usuario: usuarios){
-					out.print("<p><a href='alumnos/" + usuario.getCodigo() + "'>" + usuario.getNombre() + " " + usuario.getApellidos() + "</a> <b><a href='usuarios/delete/" + usuario.getCodigo() + "'>Borrar Usuario</a></b></p>");
+					out.print("<p><a href='usuarios/" + usuario.getCodigo() + "'>" + usuario.getNombre() + " " + usuario.getApellidos() + "</a> <b><a href='usuarios/delete/" + usuario.getCodigo() + "'>Borrar Usuario</a></b></p>");
 				}
 			} else{
 				%>

@@ -74,7 +74,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 		jdbctemplate.update(sql, new Object[]{usuario.getNombre(), usuario.getApellidos(), usuario.getfNacimiento(), usuario.getEmail()});
 		
-		logger.info("Usuario actualizado correctamente.");
+		logger.info("Usuario creado correctamente.");
 		
 		return usuario;
 	}
