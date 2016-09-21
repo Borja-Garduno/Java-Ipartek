@@ -74,7 +74,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 		jdbctemplate.update(sql, new Object[]{usuario.getNombre(), usuario.getApellidos(), usuario.getfNacimiento(), usuario.getEmail()});
 		
-		// ESTE METODO PARA SACAR LA ID DEL USUARIO INSERTADO NO SE DEBERIA USAR.
+		// ESTE METODO PARA SACAR LA ID DEL USUARIO INSERTADO NO SE DEBERIA USAR
 		// SE DEBEN USAR PROCEDIMIENTOS ALMACENADOS
 		// PODRIA DAR CONFLICTOS CON VARIAS OPERACIONES AL MISMO TIEMPO
 		String sql2 ="SELECT MAX(codigo) FROM usuario;";
