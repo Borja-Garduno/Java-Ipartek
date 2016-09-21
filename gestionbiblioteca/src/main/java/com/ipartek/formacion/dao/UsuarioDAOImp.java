@@ -74,7 +74,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 		jdbctemplate.update(sql, new Object[]{usuario.getNombre(), usuario.getApellidos(), usuario.getfNacimiento(), usuario.getEmail()});
 		
-		logger.info("Usuario creado correctamente.");
+		logger.info("Usuario creado correctamente: " + usuario.getNombre().toUpperCase() + " " + usuario.getApellidos().toUpperCase());
 		
 		return usuario;
 	}
@@ -86,7 +86,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 											usuario.getfNacimiento(), usuario.getEmail(), 
 											usuario.getCodigo()});
 		
-		logger.info("Usuario actualizado correctamente.");
+		logger.info("Usuario " + usuario.getCodigo() + " actualizado correctamente: " + usuario.getNombre().toUpperCase() + " " + usuario.getApellidos().toUpperCase());
 		
 		return usuario;
 	}
@@ -95,6 +95,6 @@ public class UsuarioDAOImp implements UsuarioDAO {
 	public void delete(int id) {
 		final String sql = "DELETE FROM usuario WHERE codigo = ?";
 		jdbctemplate.update(sql, new Object[]{id});
-		logger.info("Usuario borrado correctamente.");		
+		logger.info("Usuario borrado correctamente: (id) " + id);		
 	}
 }

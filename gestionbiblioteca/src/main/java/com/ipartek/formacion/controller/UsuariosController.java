@@ -65,10 +65,10 @@ public class UsuariosController {
 	}
 	
 	@RequestMapping(value="/delete/{id}", method = {RequestMethod.POST, RequestMethod.DELETE, RequestMethod.GET})
-	public ModelAndView delete(@PathVariable("id") int id){
-		mav = new ModelAndView("/usuarios/listado");
+	public String delete(@PathVariable("id") int id){
+		//mav = new ModelAndView("/usuarios/listado");
 		us.delete(id);
-		return mav;
+		return "redirect:/usuarios";
 	}
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)

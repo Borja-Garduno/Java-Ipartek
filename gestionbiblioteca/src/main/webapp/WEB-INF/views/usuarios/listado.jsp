@@ -18,14 +18,18 @@
 		
 		<%
 			List<Usuario> usuarios = (List<Usuario>) request.getAttribute("listado-usuarios");
-			if(usuarios.size()>0){
-				for(Usuario usuario: usuarios){
-					out.print("<p><a href='usuarios/" + usuario.getCodigo() + "'>" + usuario.getNombre() + " " + usuario.getApellidos() + "</a> <b><a href='usuarios/delete/" + usuario.getCodigo() + "'>Borrar Usuario</a></b></p>");
+			if(usuarios!=null){
+				if(usuarios.size()>0){
+					for(Usuario usuario: usuarios){
+						out.print("<p><a href='usuarios/" + usuario.getCodigo() + "'>" + usuario.getNombre() + " " + usuario.getApellidos() + "</a> <b><a href='usuarios/delete/" + usuario.getCodigo() + "'>Borrar Usuario</a></b></p>");
+					}
+				} else{
+					%>
+						<p>No se han encontrado usuarios en la Base de Datos.</p>
+					<%
 				}
 			} else{
-				%>
-					<p>No se han encontrado usuarios en la Base de Datos.</p>
-				<%
+				System.out.println("Usuarios es nulo.");
 			}
 		%>
 
