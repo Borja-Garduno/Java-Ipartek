@@ -74,8 +74,14 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 		jdbctemplate.update(sql, new Object[]{usuario.getNombre(), usuario.getApellidos(), usuario.getfNacimiento(), usuario.getEmail()});
 		
-		logger.info("Usuario creado correctamente: " + usuario.getNombre().toUpperCase() + " " + usuario.getApellidos().toUpperCase());
+		// ESTE METODO PARA SACAR LA ID DEL USUARIO INSERTADO NO SE DEBERIA USAR.
+		// SE DEBEN USAR PROCEDIMIENTOS ALMACENADOS
+		// PODRIA DAR CONFLICTOS CON VARIAS OPERACIONES AL MISMO TIEMPO
+		String sql2 ="SELECT MAX(codigo) FROM usuario;";
+		int id = jdbctemplate.queryForObject(sql2, int.class);
+		usuario.setCodigo(id);
 		
+		logger.info("Usuario " + usuario.getCodigo() + " creado correctamente: " + usuario.getNombre().toUpperCase() + " " + usuario.getApellidos().toUpperCase());
 		return usuario;
 	}
 
