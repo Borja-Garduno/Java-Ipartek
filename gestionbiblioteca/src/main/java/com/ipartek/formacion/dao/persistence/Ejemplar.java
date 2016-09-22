@@ -3,12 +3,14 @@ package com.ipartek.formacion.dao.persistence;
 public class Ejemplar {
 
 	private int codigo;
+	private int codigoLibro;
 	private String editorial;
 	private int nPaginas;
 	
 	public Ejemplar() {
 		super();
 		setCodigo(-1);
+		setCodigoLibro(-1);
 		setEditorial("");
 		setnPaginas(-1);
 	}
@@ -21,6 +23,14 @@ public class Ejemplar {
 		this.codigo = codigo;
 	}
 	
+	public int getCodigoLibro() {
+		return codigoLibro;
+	}
+
+	public void setCodigoLibro(int codigoLibro) {
+		this.codigoLibro = codigoLibro;
+	}
+
 	public String getEditorial() {
 		return editorial;
 	}

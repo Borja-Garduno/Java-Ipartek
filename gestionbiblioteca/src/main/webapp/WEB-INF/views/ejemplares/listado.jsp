@@ -21,7 +21,7 @@
 			if(ejemplares!=null){
 				if(ejemplares.size()>0){
 					for(Ejemplar ejemplar: ejemplares){
-						out.print("<p><a href='ejemplares/" + ejemplar.getCodigo() + "'>" + ejemplar.getEditorial() + " - " + ejemplar.getnPaginas() + "</a> <b><a href='ejemplares/delete/" + ejemplar.getCodigo() + "'>Borrar Ejemplar</a></b></p>");
+						out.print("<p><a href='ejemplares/" + ejemplar.getCodigo() + "'>" + ejemplar.getCodigoLibro() + " - " +  ejemplar.getEditorial() + " - " + ejemplar.getnPaginas() + "</a> <b><a href='ejemplares/delete/" + ejemplar.getCodigo() + "'>Borrar Ejemplar</a></b></p>");
 					}
 				} else{
 					%>

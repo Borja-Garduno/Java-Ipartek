@@ -68,10 +68,10 @@ public class EjemplarDAOImp implements EjemplarDAO {
 
 	@Override
 	public Ejemplar create(Ejemplar ejemplar) {
-		final String sql = "INSERT INTO ejemplar (editorial, nPaginas)"
-				+ "			VALUES ( UPPER(?), UPPER(?) );";
+		final String sql = "INSERT INTO ejemplar (codigoLibro, editorial, nPaginas)"
+				+ "			VALUES (?, UPPER(?), ? );";
 
-		jdbctemplate.update(sql, new Object[]{ejemplar.getEditorial(), ejemplar.getnPaginas()});
+		jdbctemplate.update(sql, new Object[]{ejemplar.getCodigoLibro(), ejemplar.getEditorial(), ejemplar.getnPaginas()});
 		
 		// ESTE METODO PARA SACAR LA ID DEL EJEMPLAR INSERTADO NO SE DEBERIA USAR
 		// SE DEBEN USAR PROCEDIMIENTOS ALMACENADOS
@@ -80,16 +80,16 @@ public class EjemplarDAOImp implements EjemplarDAO {
 		int id = jdbctemplate.queryForObject(sql2, int.class);
 		ejemplar.setCodigo(id);
 		
-		logger.info("Libro " + ejemplar.getCodigo() + " creado correctamente: " + ejemplar.getEditorial().toUpperCase());
+		logger.info("Libro " + ejemplar.getCodigo() + " creado correctamente: " + ejemplar.getCodigoLibro() + " - " + ejemplar.getEditorial().toUpperCase());
 		return ejemplar;
 	}
 
 	@Override
 	public Ejemplar update(Ejemplar ejemplar) {
-		final String sql = "UPDATE ejemplar SET editorial=UPPER(?), nPaginas=UPPER(?) WHERE codigo = ?;";
-		jdbctemplate.update(sql, new Object[]{ejemplar.getEditorial(), ejemplar.getnPaginas(), ejemplar.getCodigo()});
+		final String sql = "UPDATE ejemplar SET codigoLibro=?, editorial=UPPER(?), nPaginas=? WHERE codigo = ?;";
+		jdbctemplate.update(sql, new Object[]{ejemplar.getCodigoLibro(), ejemplar.getEditorial(), ejemplar.getnPaginas(), ejemplar.getCodigo()});
 		
-		logger.info("Ejemplar " + ejemplar.getCodigo() + " actualizado correctamente: " + ejemplar.getEditorial().toUpperCase());
+		logger.info("Ejemplar " + ejemplar.getCodigo() + " actualizado correctamente: " + " - " + ejemplar.getCodigoLibro() + ejemplar.getEditorial().toUpperCase());
 		
 		return ejemplar;
 	}

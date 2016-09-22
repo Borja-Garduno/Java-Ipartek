@@ -22,6 +22,7 @@ public class EjemplarValidator implements Validator {
 					new Object[]{"'codigo'"}, "Error: Codigo incorrecto");
 		}
 		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "codigoLibro", "errorCodigoLibro", "Error: Codigo Libro requerido");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "editorial", "errorEditorial", "Error: Editorial requerida");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nPaginas", "errornPaginas" ,"Error: Numero de Paginas requeridas");
 	}

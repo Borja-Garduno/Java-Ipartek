@@ -25,6 +25,14 @@
 			
 			<br/>
 			
+			<form:label path="codigoLibro">
+				<spring:message text="Codigo Libro: "/>
+			</form:label>
+			<form:input path="codigoLibro" cssClass="" cssErrorClass="" />
+			<form:errors cssClass="" path="codigoLibro" />
+			
+			<br/>
+			
 			<form:label path="editorial">
 				<spring:message text="Editorial: "/>
 			</form:label>
