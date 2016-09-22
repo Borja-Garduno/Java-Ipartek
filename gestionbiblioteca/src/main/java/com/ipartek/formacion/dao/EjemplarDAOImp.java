@@ -14,9 +14,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 
 import com.ipartek.formacion.dao.interfaces.EjemplarDAO;
 import com.ipartek.formacion.dao.mappers.EjemplarMapper;
-import com.ipartek.formacion.dao.mappers.LibroMapper;
 import com.ipartek.formacion.dao.persistence.Ejemplar;
-import com.ipartek.formacion.dao.persistence.Libro;
 
 public class EjemplarDAOImp implements EjemplarDAO {
 

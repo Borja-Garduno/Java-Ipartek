@@ -27,4 +27,5 @@
 	
 	<beans:bean id="usuarioValidator" class="com.ipartek.formacion.controller.validator.UsuarioValidator" />
 	<beans:bean id="libroValidator" class="com.ipartek.formacion.controller.validator.LibroValidator" />
+	<beans:bean id="ejemplarValidator" class="com.ipartek.formacion.controller.validator.EjemplarValidator" />
 </beans:beans>
