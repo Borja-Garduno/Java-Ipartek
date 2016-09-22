@@ -52,7 +52,7 @@ public class LibrosController {
 	
 	@RequestMapping(value="/{id}", method= RequestMethod.GET)
 	public ModelAndView getById(@PathVariable("id") int id){
-		mav = new ModelAndView("/libros/usuario");
+		mav = new ModelAndView("/libros/libro");
 		Libro libro = is.getById(id);
 		mav.addObject("libro", libro);
 		logger.info("Datos del libro cargados para edicion.");

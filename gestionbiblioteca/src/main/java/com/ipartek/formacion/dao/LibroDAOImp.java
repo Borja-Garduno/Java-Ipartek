@@ -38,7 +38,7 @@ public class LibroDAOImp implements LibroDAO {
 	public List<Libro> getAll() {
 		List<Libro> libros = null;
 		
-		final String sql = "SELECT * FROM libro";
+		final String sql = "SELECT * FROM libro;";
 		
 		try{
 			libros = jdbctemplate.query(sql, new LibroMapper());
@@ -48,14 +48,14 @@ public class LibroDAOImp implements LibroDAO {
 			
 		}
 		
-		return null;
+		return libros;
 	}
 
 	@Override
 	public Libro getById(int id) {
 		Libro libro = null;
 		
-		final String sql = "SELECT * FROM libro WHERE codigo = ?";
+		final String sql = "SELECT * FROM libro WHERE codigo = ?;";
 		
 		try{
 			libro = jdbctemplate.queryForObject(sql, new Object[]{id}, new LibroMapper());
@@ -88,7 +88,7 @@ public class LibroDAOImp implements LibroDAO {
 
 	@Override
 	public Libro update(Libro libro) {
-		final String sql = "UPDATE libro SET titulo=UPPER(?), autor=UPPER(?), isbn=UPPER(?) WHERE codigo = ?";
+		final String sql = "UPDATE libro SET titulo=UPPER(?), autor=UPPER(?), isbn=UPPER(?) WHERE codigo = ?;";
 		jdbctemplate.update(sql, new Object[]{libro.getTitulo(), libro.getAutor(), 
 											libro.getIsbn(), libro.getCodigo()});
 		
@@ -99,7 +99,7 @@ public class LibroDAOImp implements LibroDAO {
 
 	@Override
 	public void delete(int id) {
-		final String sql = "DELETE FROM libro WHERE codigo = ?";
+		final String sql = "DELETE FROM libro WHERE codigo = ?;";
 		jdbctemplate.update(sql, new Object[]{id});
 		logger.info("Libro borrado correctamente: (id) " + id);
 	}

@@ -16,6 +16,7 @@
 		
 		<p>
 			<a href="usuarios">Usuarios</a>
+			<a href="libros">Libros</a>
 		</p>
 		
 	</body>
