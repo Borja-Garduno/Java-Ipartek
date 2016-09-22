@@ -46,6 +46,7 @@ public class UsuariosController {
 		mav = new ModelAndView("/usuarios/listado");
 		List<Usuario> usuarios = us.getAll();
 		mav.addObject("listado-usuarios", usuarios);
+		logger.info("Cargado el listado completo de usuarios.");
 		return mav;
 	}
 	
@@ -54,13 +55,14 @@ public class UsuariosController {
 		mav = new ModelAndView("/usuarios/usuario");
 		Usuario usuario = us.getById(id);
 		mav.addObject("usuario", usuario);
-
+		logger.info("Datos del usuario cargados para edicion.");
 		return mav;
 	}
 	
 	@RequestMapping(value="/addUsuario", method=RequestMethod.GET)
 	public String addUsuario(Model model){
 		model.addAttribute("usuario", new Usuario());
+		logger.info("Cargado formulario para creacion de nuevo usuario.");
 		return "usuarios/usuario";
 	}
 	
@@ -68,6 +70,12 @@ public class UsuariosController {
 	public String delete(@PathVariable("id") int id){
 		//mav = new ModelAndView("/usuarios/listado");
 		us.delete(id);
+		return "redirect:/usuarios";
+	}
+	
+	@RequestMapping(value="/cancel")
+	public String cancel(){
+		logger.info("Creacion/Edicion del usuario cancelada.");
 		return "redirect:/usuarios";
 	}
 	
@@ -88,7 +96,6 @@ public class UsuariosController {
 				us.create(usuario);
 			}
 		}
-		
 		return destino;
 	}
 	

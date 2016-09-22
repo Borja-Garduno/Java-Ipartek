@@ -101,6 +101,6 @@ public class UsuarioDAOImp implements UsuarioDAO {
 	public void delete(int id) {
 		final String sql = "DELETE FROM usuario WHERE codigo = ?";
 		jdbctemplate.update(sql, new Object[]{id});
-		logger.info("Usuario borrado correctamente: (id) " + id);		
+		logger.info("Usuario borrado correctamente: (id) " + id);
 	}
 }

@@ -64,6 +64,9 @@
 			<c:if test="${usuario.codigo<0}">
 				<input type="submit" value="<spring:message text="Crear Usuario"/>"/>
 			</c:if>
+			
+			<a href="cancel">Cancelar</a>
+			
 		</form:form>
 		
 	</body>
