@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ipartek.formacion.dao.persistence.Ejemplar;
+import com.ipartek.formacion.dao.persistence.Libro;
 import com.ipartek.formacion.service.EjemplarServiceImp;
+import com.ipartek.formacion.service.LibroServiceImp;
 
 @Controller
 @RequestMapping(value="/ejemplares")
@@ -30,6 +32,8 @@ public class EjemplarController {
 	
 	@Autowired
 	private EjemplarServiceImp es = null;
+	@Autowired
+	private LibroServiceImp is = null;
 	private ModelAndView mav = null;
 	
 	@Autowired
@@ -53,8 +57,13 @@ public class EjemplarController {
 	@RequestMapping(value="/{id}", method= RequestMethod.GET)
 	public ModelAndView getById(@PathVariable("id") int id){
 		mav = new ModelAndView("/ejemplares/ejemplar");
+		
 		Ejemplar ejemplar = es.getById(id);
 		mav.addObject("ejemplar", ejemplar);
+		
+		List<Libro> libros = is.getAll();
+		mav.addObject("listado-libros", libros);
+		
 		logger.info("Datos del ejemplar cargados para edicion.");
 		return mav;
 	}
@@ -62,6 +71,10 @@ public class EjemplarController {
 	@RequestMapping(value="/addEjemplar", method=RequestMethod.GET)
 	public String addEjemplar(Model model){
 		model.addAttribute("ejemplar", new Ejemplar());
+		
+		List<Libro> libros = is.getAll();
+		model.addAttribute("listado-libros", libros);
+		
 		logger.info("Cargado formulario para creacion de nuevo ejemplar.");
 		return "ejemplares/ejemplar";
 	}

@@ -23,7 +23,7 @@ public class EjemplarDAOImp implements EjemplarDAO {
 	private JdbcTemplate jdbctemplate;
 	private SimpleJdbcCall jdbcCall;
 	
-	private static final Logger logger = LoggerFactory.getLogger(UsuarioDAOImp.class);
+	private static final Logger logger = LoggerFactory.getLogger(EjemplarDAOImp.class);
 	
 	@Override
 	public void setDataSource(DataSource dataSource) {
@@ -80,7 +80,7 @@ public class EjemplarDAOImp implements EjemplarDAO {
 		int id = jdbctemplate.queryForObject(sql2, int.class);
 		ejemplar.setCodigo(id);
 		
-		logger.info("Libro " + ejemplar.getCodigo() + " creado correctamente: " + ejemplar.getCodigoLibro() + " - " + ejemplar.getEditorial().toUpperCase());
+		logger.info("Libro " + ejemplar.getCodigo() + " creado correctamente: (id libro)" + ejemplar.getCodigoLibro() + " - (editorial)" + ejemplar.getEditorial().toUpperCase());
 		return ejemplar;
 	}
 
@@ -89,7 +89,7 @@ public class EjemplarDAOImp implements EjemplarDAO {
 		final String sql = "UPDATE ejemplar SET codigoLibro=?, editorial=UPPER(?), nPaginas=? WHERE codigo = ?;";
 		jdbctemplate.update(sql, new Object[]{ejemplar.getCodigoLibro(), ejemplar.getEditorial(), ejemplar.getnPaginas(), ejemplar.getCodigo()});
 		
-		logger.info("Ejemplar " + ejemplar.getCodigo() + " actualizado correctamente: " + " - " + ejemplar.getCodigoLibro() + ejemplar.getEditorial().toUpperCase());
+		logger.info("Ejemplar " + ejemplar.getCodigo() + " actualizado correctamente: (id libro)" + ejemplar.getCodigoLibro() + " - (editorial)" + ejemplar.getEditorial().toUpperCase());
 		
 		return ejemplar;
 	}

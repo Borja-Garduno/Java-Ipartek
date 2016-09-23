@@ -1,3 +1,5 @@
+<%@page import="com.ipartek.formacion.dao.persistence.Libro"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -28,7 +30,50 @@
 			<form:label path="codigoLibro">
 				<spring:message text="Codigo Libro: "/>
 			</form:label>
-			<form:input path="codigoLibro" cssClass="" cssErrorClass="" />
+			<c:if test="${ejemplar.codigo>0}">
+				<form:input path="codigoLibro" disabled="true" cssClass="" cssErrorClass="" />
+				
+				<%
+				List<Libro> libros = (List<Libro>) request.getAttribute("listado-libros");
+				if(libros!=null){
+					if(libros.size()>0){
+						%>
+						<form:select path="codigoLibro">
+      						<form:options items="<%=libros %>" itemValue="codigo" itemLabel="titulo"/>
+						</form:select>
+						<%
+					} else{
+						%>
+							<p>No se han encontrado libros en la Base de Datos.</p>
+						<%
+					}
+				} else{
+					System.out.println("Libros es nulo.");
+				}
+				%>
+				
+			</c:if>
+			
+			<c:if test="${ejemplar.codigo<0}">
+				<%
+				List<Libro> libros = (List<Libro>) request.getAttribute("listado-libros");
+				if(libros!=null){
+					if(libros.size()>0){
+						%>
+						<form:select path="codigoLibro">
+      						<form:options items="<%=libros %>" itemValue="codigo" itemLabel="titulo"/>
+						</form:select>
+						<%
+					} else{
+						%>
+							<p>No se han encontrado libros en la Base de Datos.</p>
+						<%
+					}
+				} else{
+					System.out.println("Libros es nulo.");
+				}
+				%>
+			</c:if>
 			<form:errors cssClass="" path="codigoLibro" />
 			
 			<br/>

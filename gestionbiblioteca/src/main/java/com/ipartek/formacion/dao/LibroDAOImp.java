@@ -25,7 +25,7 @@ public class LibroDAOImp implements LibroDAO {
 	private JdbcTemplate jdbctemplate;
 	private SimpleJdbcCall jdbcCall;
 	
-	private static final Logger logger = LoggerFactory.getLogger(UsuarioDAOImp.class);
+	private static final Logger logger = LoggerFactory.getLogger(LibroDAOImp.class);
 	
 	@Override
 	public void setDataSource(DataSource dataSource) {
