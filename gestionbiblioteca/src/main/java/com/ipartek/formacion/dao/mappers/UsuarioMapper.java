@@ -14,7 +14,6 @@ public class UsuarioMapper implements RowMapper<Usuario> {
 		Usuario usuario = new Usuario();
 		
 		usuario.setCodigo(rs.getInt("codigo"));
-		usuario.setCodigoEjemplar(rs.getInt("codigoEjemplar"));
 		usuario.setNombre(rs.getString("nombre"));
 		usuario.setApellidos(rs.getString("apellidos"));
 		usuario.setfNacimiento(rs.getDate("fNacimiento"));

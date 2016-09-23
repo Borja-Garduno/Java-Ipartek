@@ -10,7 +10,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Usuario {
 	
 	private int codigo;
-	private int codigoEjemplar;
 	private String nombre;
 	private String apellidos;
 	@NotNull @Past @DateTimeFormat(pattern="dd/MM/yyyy")
@@ -20,7 +19,6 @@ public class Usuario {
 	public Usuario() {
 		super();
 		setCodigo(-1);
-		setCodigoEjemplar(-1);
 		setNombre("");
 		setApellidos("");
 		setEmail("");
@@ -32,14 +30,6 @@ public class Usuario {
 	
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
-	}
-	
-	public int getCodigoEjemplar() {
-		return codigoEjemplar;
-	}
-
-	public void setCodigoEjemplar(int codigoEjemplar) {
-		this.codigoEjemplar = codigoEjemplar;
 	}
 
 	public String getNombre() {
