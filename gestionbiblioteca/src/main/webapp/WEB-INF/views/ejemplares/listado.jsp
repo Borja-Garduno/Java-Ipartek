@@ -14,14 +14,14 @@
 		
 		<a href="ejemplares/addEjemplar">Crear Ejemplar</a>
 
-		<p><b>Listado de Ejamplres:</b></p>
+		<p><b>Listado de Ejemplares:</b></p>
 		
 		<%
 			List<Ejemplar> ejemplares = (List<Ejemplar>) request.getAttribute("listado-ejemplares");
 			if(ejemplares!=null){
 				if(ejemplares.size()>0){
 					for(Ejemplar ejemplar: ejemplares){
-						out.print("<p><a href='ejemplares/" + ejemplar.getCodigo() + "'>" + ejemplar.getCodigoLibro() + " - " +  ejemplar.getEditorial() + " - " + ejemplar.getnPaginas() + "</a> <b><a href='ejemplares/delete/" + ejemplar.getCodigo() + "'>Borrar Ejemplar</a></b></p>");
+						out.print("<p><a href='ejemplares/" + ejemplar.getCodigo() + "'>" + ejemplar.getLibro().getCodigo() + " - " +  ejemplar.getEditorial() + " - " + ejemplar.getnPaginas() + "</a> <b><a href='ejemplares/delete/" + ejemplar.getCodigo() + "'>Borrar Ejemplar</a></b></p>");
 					}
 				} else{
 					%>

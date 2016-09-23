@@ -2,17 +2,35 @@ package com.ipartek.formacion.dao.persistence;
 
 public class Ejemplar {
 	
+	private Libro libro;
+	private Usuario usuario;
 	private int codigo;
-	private int codigoLibro;
 	private String editorial;
 	private int nPaginas;
 	
 	public Ejemplar() {
 		super();
+		setLibro(new Libro());
+		setUsuario(new Usuario());
 		setCodigo(-1);
-		setCodigoLibro(-1);
 		setEditorial("");
 		setnPaginas(-1);
+	}
+	
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public int getCodigo() {
@@ -21,14 +39,6 @@ public class Ejemplar {
 	
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
-	}
-	
-	public int getCodigoLibro() {
-		return codigoLibro;
-	}
-
-	public void setCodigoLibro(int codigoLibro) {
-		this.codigoLibro = codigoLibro;
 	}
 
 	public String getEditorial() {
