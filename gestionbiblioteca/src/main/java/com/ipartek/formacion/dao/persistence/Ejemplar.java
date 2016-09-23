@@ -1,7 +1,7 @@
 package com.ipartek.formacion.dao.persistence;
 
 public class Ejemplar {
-
+	
 	private int codigo;
 	private int codigoLibro;
 	private String editorial;

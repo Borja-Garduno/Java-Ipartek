@@ -69,10 +69,10 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 	@Override
 	public Usuario create(Usuario usuario) {
-		final String sql = "INSERT INTO usuario (nombre, apellidos, fNacimiento, email)"
-				+ "			VALUES ( UPPER(?), UPPER(?), ?, UPPER(?) );";
+		final String sql = "INSERT INTO usuario (codigoEjemplar, nombre, apellidos, fNacimiento, email) "
+						+ "VALUES (?, UPPER(?), UPPER(?), ?, UPPER(?) );";
 
-		jdbctemplate.update(sql, new Object[]{usuario.getNombre(), usuario.getApellidos(), usuario.getfNacimiento(), usuario.getEmail()});
+		jdbctemplate.update(sql, new Object[]{usuario.getCodigoEjemplar(), usuario.getNombre(), usuario.getApellidos(), usuario.getfNacimiento(), usuario.getEmail()});
 		
 		// ESTE METODO PARA SACAR LA ID DEL USUARIO INSERTADO NO SE DEBERIA USAR
 		// SE DEBEN USAR PROCEDIMIENTOS ALMACENADOS
@@ -87,10 +87,11 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 	@Override
 	public Usuario update(Usuario usuario) {
-		final String sql = "UPDATE usuario SET nombre=UPPER(?), apellidos=UPPER(?), fNacimiento=?, email=UPPER(?) WHERE codigo = ?";
-		jdbctemplate.update(sql, new Object[]{usuario.getNombre(), usuario.getApellidos(), 
-											usuario.getfNacimiento(), usuario.getEmail(), 
-											usuario.getCodigo()});
+		final String sql = "UPDATE usuario SET codigoEjemplar=? nombre=UPPER(?), apellidos=UPPER(?), fNacimiento=?, email=UPPER(?) "
+							+ "WHERE codigo = ?";
+		jdbctemplate.update(sql, new Object[]{usuario.getCodigoEjemplar(), usuario.getNombre(), 
+											usuario.getApellidos(), usuario.getfNacimiento(), 
+											usuario.getEmail(), usuario.getCodigo()});
 		
 		logger.info("Usuario " + usuario.getCodigo() + " actualizado correctamente: " + usuario.getNombre().toUpperCase() + " " + usuario.getApellidos().toUpperCase());
 		

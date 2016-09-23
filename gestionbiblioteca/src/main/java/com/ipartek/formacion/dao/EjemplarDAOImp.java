@@ -48,7 +48,45 @@ public class EjemplarDAOImp implements EjemplarDAO {
 		
 		return ejemplares;
 	}
-
+	
+	@Override
+	public List getEjemplaresLibrosAll(){
+		List lista = null;
+		
+		final String sql = "SELECT l.codigo as Codigo_Libro, e.codigo as Codigo_Ejemplar, l.titulo as Titulo_Libro "
+							+ "FROM ejemplar e "
+							+ "INNER JOIN libro l "
+							+ "ON e.codigoLibro=l.codigo;";
+		
+		try{
+			lista = jdbctemplate.queryForList(sql);
+			//logger.info("Datos lista: " + lista.toString());
+			
+			for(int i=0; i<lista.size(); i++){
+				System.out.println(lista.get(i));
+			}
+		} catch(EmptyResultDataAccessException e){
+			lista = new ArrayList();
+		} catch(Exception e){
+			
+		}
+		
+		return lista;
+	}
+	
+	/*
+	SELECT l.codigo as Codigo_Libro, e.codigo as Codigo_Ejemplar, l.titulo as Titulo_Libro
+	FROM ejemplar e 
+	INNER JOIN libro l
+	ON e.codigoLibro=l.codigo;
+	
+	Codigo_Libro 	Codigo_Ejemplar 	Titulo_Libro 	
+	1 				6 					LOS PILARES DE LA TIERRA
+	2 				7 					HARRY POTTER Y LA PIEDRA FILOSOFAL
+	2 				8 					HARRY POTTER Y LA PIEDRA FILOSOFAL
+	4 				9 					DIEZ NEGRITOS
+	*/
+	
 	@Override
 	public Ejemplar getById(int id) {
 		Ejemplar ejemplar = null;
@@ -80,7 +118,7 @@ public class EjemplarDAOImp implements EjemplarDAO {
 		int id = jdbctemplate.queryForObject(sql2, int.class);
 		ejemplar.setCodigo(id);
 		
-		logger.info("Libro " + ejemplar.getCodigo() + " creado correctamente: (id libro)" + ejemplar.getCodigoLibro() + " - (editorial)" + ejemplar.getEditorial().toUpperCase());
+		logger.info("Libro " + ejemplar.getCodigo() + " creado correctamente: (id libro) " + ejemplar.getCodigoLibro() + " - (editorial) " + ejemplar.getEditorial().toUpperCase());
 		return ejemplar;
 	}
 
@@ -89,7 +127,7 @@ public class EjemplarDAOImp implements EjemplarDAO {
 		final String sql = "UPDATE ejemplar SET codigoLibro=?, editorial=UPPER(?), nPaginas=? WHERE codigo = ?;";
 		jdbctemplate.update(sql, new Object[]{ejemplar.getCodigoLibro(), ejemplar.getEditorial(), ejemplar.getnPaginas(), ejemplar.getCodigo()});
 		
-		logger.info("Ejemplar " + ejemplar.getCodigo() + " actualizado correctamente: (id libro)" + ejemplar.getCodigoLibro() + " - (editorial)" + ejemplar.getEditorial().toUpperCase());
+		logger.info("Ejemplar " + ejemplar.getCodigo() + " actualizado correctamente: (id libro) " + ejemplar.getCodigoLibro() + " - (editorial) " + ejemplar.getEditorial().toUpperCase());
 		
 		return ejemplar;
 	}

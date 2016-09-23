@@ -15,4 +15,6 @@ public interface EjemplarDAO extends DAOSetter {
 	public Ejemplar update(Ejemplar ejemplar);
 	
 	public void delete(int id);
+
+	public List getEjemplaresLibrosAll();
 }
